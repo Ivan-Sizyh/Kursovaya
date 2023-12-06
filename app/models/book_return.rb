@@ -1,0 +1,2 @@
+class BookReturn < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class BookCard < ApplicationRecord
+end
