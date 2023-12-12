@@ -1,0 +1,18 @@
+<h1 class="mt-5">Таблица типов:</h1>
+
+<% if @types.empty? %>
+  <h1 class="mt-5">Книг не типов!</h1>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Название</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @types %>
+    </tbody>
+  </table>
+<% end %>  
+
+ <%= link_to "Назад", books_path, class: "btn btn-primary mt-5" %>

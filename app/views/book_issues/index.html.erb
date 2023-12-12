@@ -1,0 +1,20 @@
+<h1 class="mt-5">Таблица актуальных выдач книг:</h1>
+
+<% if @book_not_returns.empty? %>
+  <h1 class="mt-5">Нет актуальных выдач!</h1>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Дата выдачи</th>
+        <th scope="col">Дата возврата</th>
+        <th scope="col">Книжная карточка</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @book_not_returns %>
+    </tbody>
+  </table>
+<% end %>  
+
+ <%= link_to "Назад", books_path, class: "btn btn-primary mt-5" %>

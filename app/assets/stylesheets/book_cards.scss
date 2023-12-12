@@ -1,0 +1,16 @@
+.custom-btn-class-for-books {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.custom-btn-class-for-books_without_margin {
+  width: 200px;
+}
+
+.custom-btn-class-for-books:last-child {
+  margin-right: 0;
+}
+
+.full-height-container {
+  height: 100vh;
+}

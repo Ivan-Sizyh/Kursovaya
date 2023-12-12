@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_05_201722) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_09_171950) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,25 +37,41 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_201722) do
 
   create_table "book_returns", force: :cascade do |t|
     t.boolean "returned", default: false, null: false
-    t.bigint "book_issues_id", null: false
+    t.bigint "book_issue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_issues_id"], name: "index_book_returns_on_book_issues_id"
+    t.index ["book_issue_id"], name: "index_book_returns_on_book_issue_id"
+  end
+
+  create_table "book_types", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_types_on_book_id"
+    t.index ["type_id"], name: "index_book_types_on_type_id"
   end
 
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
     t.string "author", null: false
-    t.bigint "type_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["type_id"], name: "index_books_on_type_id"
   end
 
   create_table "libraries", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "library_memberships", force: :cascade do |t|
+    t.bigint "library_id", null: false
+    t.bigint "reader_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["library_id"], name: "index_library_memberships_on_library_id"
+    t.index ["reader_id"], name: "index_library_memberships_on_reader_id"
   end
 
   create_table "readers", force: :cascade do |t|
@@ -65,16 +81,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_201722) do
     t.string "home_address", null: false
     t.string "home_phone", null: false
     t.string "work_phone", null: false
-    t.bigint "library_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["library_id"], name: "index_readers_on_library_id"
   end
 
   create_table "types", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "book_returns", "book_issues"
+  add_foreign_key "book_types", "books"
+  add_foreign_key "book_types", "types"
+  add_foreign_key "library_memberships", "libraries"
+  add_foreign_key "library_memberships", "readers"
 end

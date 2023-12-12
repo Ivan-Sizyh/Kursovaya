@@ -1,0 +1,20 @@
+ <% if @book_cards.empty? %>
+  <h1 class="mt-5">Книжных карточек не создано!</h1>
+<% else %>
+  <h1 class="mt-5">Таблица книжных карточек</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Уникальный номер</th>
+        <th scope="col">Книга</th>
+        <th scope="col">Библиотека</th>
+        <th scope="col">Читатель</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @book_cards %>
+    </tbody>
+  </table>
+<% end %>  
+ 
+ <%= link_to "Назад", books_path, class: "btn btn-primary mt-5" %>

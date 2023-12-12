@@ -1,0 +1,27 @@
+<div>
+  <%= link_to "Книжные карточки", book_cards_path, class: "btn btn-primary mb-3 custom-btn-class-for-books" %>
+  <%= link_to "Типы", types_path, class: "btn btn-primary mb-3 custom-btn-class-for-books" %>
+  <%= link_to "Выдача книг", book_issues_path, class: "btn btn-primary mb-3 custom-btn-class-for-books" %>
+  <%= link_to "Возврат книг книг", book_returns_path, class: "btn btn-primary mb-3 custom-btn-class-for-books" %>
+</div>  
+
+<h1 class="mt-5">Таблица книг:</h1>
+
+<% if @books.empty? %>
+  <h1 class="mt-5">Книг не создано!</h1>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Название</th>
+        <th scope="col">Автор</th>
+        <th scope="col">Тип</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @books %>
+    </tbody>
+  </table>
+<% end %>  
+
+ <%= link_to "Назад", root_path, class: "btn btn-primary mt-5" %>
