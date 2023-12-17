@@ -60,7 +60,7 @@ book_cards = BookCard.all
 
   BookIssue.create!(
     issue_date: FFaker::Time.between(30.days.ago, Time.current),
-    return_date: FFaker::Time.between(Time.current, 7.days.from_now),
+    return_date: FFaker::Time.between(8.days.from_now, 30.days.from_now),
     book_card: book_cards.sample
   )
 end

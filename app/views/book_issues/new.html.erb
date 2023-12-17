@@ -1,0 +1,19 @@
+<%= render 'shared/errors', object: @book_issue %>
+
+<%= form_for @book_issue, data: { turbo: false } do |f| %>
+  <div class="mb-3">
+    <%= f.label :return_date, class: 'form-label' %>
+    <%= f.date_field :return_date, class: 'form-control datepicker' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :book_card_id, 'Book Card', class: 'form-label' %>
+    <%= f.collection_select :book_card_id, BookCard.all, :id, :uniq_number, { prompt: 'Select a book card' }, class: 'form-select' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.submit 'Create Book Issue', class: 'btn btn-primary mt-3' %>
+  </div>
+<% end %>
+
+<%= link_to 'Назад', book_issues_path, class: 'btn btn-primary mt-5' %>

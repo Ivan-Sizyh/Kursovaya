@@ -2,4 +2,8 @@
   <td><%= book_issue.issue_date %></td>
   <td><%= book_issue.return_date %></td>
   <td><%= book_issue.book_card.uniq_number %></td>
+  <td><%= link_to 'Delete', book_issue_path(book_issue), 
+                            data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, 
+                            class: 'btn btn-danger' %>
+  </td>
 </tr>
