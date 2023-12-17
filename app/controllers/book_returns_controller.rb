@@ -1,4 +1,6 @@
-class BookReturnsController < ApplicationController
+# frozen_string_literal: true
+
+class BookReturnsController < ApplicationController # rubocop:disable Style/Documentation
   def index
     @book_returns = BookReturn.all
 

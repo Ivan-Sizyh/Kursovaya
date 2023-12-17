@@ -1,4 +1,6 @@
-class CreateReaders < ActiveRecord::Migration[7.0]
+# frozen_string_literal: true
+
+class CreateReaders < ActiveRecord::Migration[7.0] # rubocop:disable Style/Documentation
   def change
     create_table :readers do |t|
       t.string :first_name, null: false

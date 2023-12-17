@@ -1,13 +1,13 @@
-class BooksController < ApplicationController
+# frozen_string_literal: true
+
+class BooksController < ApplicationController # rubocop:disable Style/Documentation
   before_action :find_book, only: %i[show]
 
   def index
     @books = Book.all
   end
 
-  def show
-
-  end
+  def show; end
 
   private
 

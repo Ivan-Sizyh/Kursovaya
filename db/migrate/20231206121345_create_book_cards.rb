@@ -1,4 +1,6 @@
-class CreateBookCards < ActiveRecord::Migration[7.0]
+# frozen_string_literal: true
+
+class CreateBookCards < ActiveRecord::Migration[7.0] # rubocop:disable Style/Documentation
   def change
     create_table :book_cards do |t|
       t.integer :uniq_number, null: false

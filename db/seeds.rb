@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 5.times do
   Type.create!(
     name: FFaker::Book.genre
@@ -9,7 +11,7 @@ types = Type.all
 5.times do
   book = Book.create!(
     title: FFaker::Book.title,
-    author: FFaker::Book.author,
+    author: FFaker::Book.author
   )
 
   book.types << types.sample
@@ -43,10 +45,10 @@ books = Book.all
 
 5.times do
   reader = readers.sample
-  book_card = BookCard.create!(
+  BookCard.create!(
     uniq_number: rand(100..999),
     book: books.sample,
-    reader: reader,
+    reader:,
     library: libraries.sample
   )
 end
@@ -54,7 +56,7 @@ end
 book_cards = BookCard.all
 
 5.times do
-  book_card = BookCard.all.sample
+  BookCard.all.sample
 
   BookIssue.create!(
     issue_date: FFaker::Time.between(30.days.ago, Time.current),

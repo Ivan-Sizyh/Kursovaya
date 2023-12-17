@@ -1,4 +1,6 @@
-class UpdateReturnedWorker
+# frozen_string_literal: true
+
+class UpdateReturnedWorker # rubocop:disable Style/Documentation
   include Sidekiq::Worker
 
   def perform
